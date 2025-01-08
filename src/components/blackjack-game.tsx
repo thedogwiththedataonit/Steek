@@ -122,12 +122,11 @@ export default function BlackjackGame() {
     const newDeck = [...deck]
 
     while (shouldDealerHit(currentDealerHand)) {
-      const newCard = newDeck.pop()!
+      const newCard = { ...newDeck.pop()!, hidden: false }
       currentDealerHand = [...currentDealerHand, newCard]
       setDealerHand(currentDealerHand)
       finalDealerHandRef.current = currentDealerHand
       setDeck(newDeck)
-      // Add delay for animation
       await new Promise(resolve => setTimeout(resolve, 500))
     }
 
