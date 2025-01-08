@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react"
 import { createDeck, calculateHand, Card, isBlackjack, canSplit, formatHandValue, isBust, shouldDealerHit } from "../utils/cards"
 import { PlayingCard } from "./playing-card"
 import { GameControls } from "./game-controls"
-import { Effects } from "./effects"
 import { BetHistory } from "./bet-history"
 import { Bell, Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -69,6 +68,7 @@ export default function BlackjackGame() {
 
   const offerInsurance = () => {
     // Implement insurance logic here
+    console.log( "Insurance offered: ", insurance)
   }
 
   const hit = () => {
@@ -121,7 +121,7 @@ export default function BlackjackGame() {
     setDealerHand(currentDealerHand)
     finalDealerHandRef.current = currentDealerHand
 
-    let newDeck = [...deck]
+    const newDeck = [...deck]
 
     while (shouldDealerHit(currentDealerHand)) {
       const newCard = { ...newDeck.pop()!, hidden: false }
