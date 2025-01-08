@@ -8,6 +8,7 @@ import { Effects } from "./effects"
 import { BetHistory } from "./bet-history"
 import { Bell, Plus } from 'lucide-react'
 import { Button } from "@/components/ui/button"
+import { MultiEffects } from "./effects"
 
 interface BetHistoryEntry {
   amount: number
@@ -68,7 +69,6 @@ export default function BlackjackGame() {
 
   const offerInsurance = () => {
     // Implement insurance logic here
-    console.log("Insurance offered: ", insurance)
   }
 
   const hit = () => {
@@ -84,12 +84,14 @@ export default function BlackjackGame() {
     const handValue = calculateHand(newHands[currentHandIndex])
     if (handValue > 21) {
       handlePlayerBust()
-    } else if (handValue === 21 || currentHandIndex < playerHands.length - 1) {
+    } else if (handValue === 21) {
       if (currentHandIndex < playerHands.length - 1) {
         setCurrentHandIndex(currentHandIndex + 1)
       } else {
-        dealerTurn()
+        stand()
       }
+    } else if (currentHandIndex < playerHands.length - 1) {
+      setCurrentHandIndex(currentHandIndex + 1)
     }
   }
 
@@ -119,7 +121,7 @@ export default function BlackjackGame() {
     setDealerHand(currentDealerHand)
     finalDealerHandRef.current = currentDealerHand
 
-    const newDeck = [...deck]
+    let newDeck = [...deck]
 
     while (shouldDealerHit(currentDealerHand)) {
       const newCard = { ...newDeck.pop()!, hidden: false }
@@ -280,7 +282,7 @@ export default function BlackjackGame() {
           <span className="text-2xl font-bold">Steek</span>
         </div>
         <div className="flex items-center space-x-4 p-1 px-2 rounded-lg border border-yellow-500">
-          <span className="text-md tracking-tight text-yellow-400">${wallet.toFixed(2)}</span>
+          <span className="text-md tracking-tight text-yellow-400">${wallet > 0 ? wallet.toFixed(2) : 0}</span>
           <Button size="icon" className="h-8 bg-yellow-500 hover:bg-yellow-500">
             <Plus className="h-4 w-4" />
           </Button>
@@ -377,8 +379,7 @@ export default function BlackjackGame() {
         </div>
       </main>
 
-      <Effects result={result[0]} />
+      <MultiEffects results={result} />
     </div>
   )
 }
-
