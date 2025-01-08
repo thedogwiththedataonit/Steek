@@ -68,6 +68,7 @@ export default function BlackjackGame() {
 
   const offerInsurance = () => {
     // Implement insurance logic here
+    console.log("Insurance offered: ", insurance)
   }
 
   const hit = () => {
@@ -118,7 +119,7 @@ export default function BlackjackGame() {
     setDealerHand(currentDealerHand)
     finalDealerHandRef.current = currentDealerHand
 
-    let newDeck = [...deck]
+    const newDeck = [...deck]
 
     while (shouldDealerHit(currentDealerHand)) {
       const newCard = newDeck.pop()!
