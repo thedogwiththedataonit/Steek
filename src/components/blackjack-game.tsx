@@ -282,7 +282,7 @@ export default function BlackjackGame() {
           <span className="text-2xl font-bold">Steek</span>
         </div>
         <div className="flex items-center space-x-4 p-1 px-2 rounded-lg border border-yellow-500">
-          <span className="text-md tracking-tight text-yellow-400">${wallet > 0 ? wallet.toFixed(2) : 0}</span>
+          <span className="text-md tracking-tight font-bold text-yellow-400">${wallet > 0 ? wallet.toFixed(2) : 0}</span>
           <Button size="icon" className="h-8 bg-yellow-500 hover:bg-yellow-500">
             <Plus className="h-4 w-4" />
           </Button>
