@@ -279,7 +279,7 @@ export default function BlackjackGame() {
     <div className="min-h-screen bg-slate-900 text-white flex flex-col">
       <header className="flex items-center justify-between px-4 py-1 bg-slate-800">
         <div className="flex items-center space-x-4">
-          <span className="text-2xl font-bold">Steek</span>
+          <span className="text-2xl font-bold">Steek Casino</span>
         </div>
         <div className="flex items-center space-x-4 p-1 px-2 rounded-lg border border-yellow-500">
           <span className="text-md tracking-tight font-bold text-yellow-400">${wallet ? wallet.toFixed(2) : 0}</span>
