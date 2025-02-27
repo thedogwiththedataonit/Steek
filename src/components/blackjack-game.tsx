@@ -343,7 +343,7 @@ export default function BlackjackGame() {
               {gameOver && (
                 <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50">
                   <Button onClick={resetGame} className="bg-green-600 hover:bg-green-700">
-                    Play Again
+                    Play Again PLEASE
                   </Button>
                 </div>
               )}
